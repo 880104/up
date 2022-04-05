@@ -1,12 +1,32 @@
 #!/bin/bash -x
 
-SelfFile=$(realpath ${BASH_SOURCE[0]} || exit 1)
-SelfDir=$(dirname $SelfFile || exit 1)
+gitDir=$(realpath . || exit 1)
 
-cd $SelfDir || exit 1
+selfFile=$(realpath ${BASH_SOURCE[0]} || exit 1)
+selfDir=$(dirname $SelfFile || exit 1)
 
-unxz ipfs.xz || exit 2
+cd $selfDir || exit 1
 
-chmod +x ipfs || exit 3
+tmpDir=$(mktemp -d || exit 2)
+unxz -k ipfs.xz || exit 2
+mv ./ipfs "$tmpDir" || exit 2
 
-./ipfs
+cd $tmpDir || exit 2
+chmod +x ./ipfs || exit 2
+ipfs=$(realpath ./ipfs || exit 2)
+
+ipfsg() {
+  local tmpdir=$(mktemp -d || return 1)
+  cd $tmpdir || return 1
+
+  local qm="$1"
+  local dst="$2"
+
+  $ipfs get "$qm" || return 2
+  
+  mv ./$qm "$dst" || return 3
+
+  return 0
+}
+
+ipfsg QmaoLoRFPaiX9yqUR3D4yUuDpkxNhabsTm5Nqar8MUvhLv "$gitDir"/monero-2022-04/
