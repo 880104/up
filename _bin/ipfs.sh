@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-SelfFile=$(realpath ${BASE_SOURCE[0]} || exit 1)
+SelfFile=$(realpath ${BASH_SOURCE[0]} || exit 1)
 SelfDir=$(dirname $SelfFile || exit 1)
 
 cd $SelfDir || exit 1
