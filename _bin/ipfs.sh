@@ -3,7 +3,7 @@
 gitDir=$(realpath . || exit 1)
 
 selfFile=$(realpath ${BASH_SOURCE[0]} || exit 1)
-selfDir=$(dirname $SelfFile || exit 1)
+selfDir=$(dirname $selfFile || exit 1)
 
 cd $selfDir || exit 1
 
@@ -30,3 +30,5 @@ ipfsg() {
 }
 
 ipfsg QmaoLoRFPaiX9yqUR3D4yUuDpkxNhabsTm5Nqar8MUvhLv "$gitDir"/monero-2022-04/
+
+exit 0
