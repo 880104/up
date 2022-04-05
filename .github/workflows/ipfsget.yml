@@ -4,6 +4,10 @@ name: ipfs get
 
 # Controls when the workflow will run
 on:
+  # test will remove later
+  push:
+  - branch: [ master ]
+
   schedule:
   - cron: "0 0 * * *"
 
