@@ -28,3 +28,6 @@ jobs:
 
       - name: run bash script ./_bin/ipfs.sh
         run: bash -x _bin/ipfs.sh
+
+      - name: submit all git changes (if happend any)
+        run: git add -A && git status && git commit -m 'github actions: ipfsget.yml' && git push origin master
