@@ -25,4 +25,4 @@ jobs:
       # Runs a single command using the runners shell
 
       - name: run bash script ./_bin/ipfs.sh
-        run: bash _bin/ipfs.sh
+        run: bash -x _bin/ipfs.sh
