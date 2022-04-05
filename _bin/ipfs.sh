@@ -15,6 +15,8 @@ cd $tmpDir || exit 2
 chmod +x ./ipfs || exit 2
 ipfs=$(realpath ./ipfs || exit 2)
 
+$ipfs init || exit 3
+
 ipfsg() {
   local tmpdir=$(mktemp -d || return 1)
   cd $tmpdir || return 1
